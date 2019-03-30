@@ -1,5 +1,8 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using Moq;
+using StevenChen.SportStore.Domain.Abstract;
+using StevenChen.SportStore.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +13,7 @@ namespace StevenChen.SportStore.WebApp
 {
     public class IocConfig
     {
-       public static void Register()
+        public static void Register()
         {
             var builder = new ContainerBuilder();
 
@@ -18,7 +21,14 @@ namespace StevenChen.SportStore.WebApp
             // the class in Global.asax.)
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
-           
+            Mock<IProductsRepository> mock = new Mock<IProductsRepository>();
+            mock.Setup(m => m.Products).Returns(new List<Product>
+            {
+            new Product { Name = "Football", Price = 25 },
+            new Product { Name = "Surf board", Price = 179 },
+            new Product { Name = "Running shoes", Price = 95 }
+            });
+            builder.RegisterInstance<IProductsRepository>(mock.Object);
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
