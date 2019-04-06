@@ -12,7 +12,7 @@ namespace StevenChen.SportStore.WebApp.Controllers
     {
         private readonly IProductsRepository repository;
 
-        public int PageSize = 2;
+        public int PageSize = 5;
 
         public ProductController(IProductsRepository productsRepository)
         {
