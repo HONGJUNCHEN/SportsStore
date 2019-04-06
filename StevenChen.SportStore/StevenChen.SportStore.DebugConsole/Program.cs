@@ -16,14 +16,14 @@ namespace StevenChen.SportStore.DebugConsole
             using (var ctx = new EFDbContext())
             {
                 ctx.Products.RemoveRange(ctx.Products);
-                for (int i = 1; i <= 100; i++)
+                for (int i = 1; i <100; i++)
                 {
                     var product = new Product()
                     {
                         Name = $"product{i}",
                         Price = i,
                         Description=$"desc{i}",
-                        Category="cate"
+                        Category=$"category{i/10+1}"
                     };
                     ctx.Products.Add(product);
                     ctx.SaveChanges();
