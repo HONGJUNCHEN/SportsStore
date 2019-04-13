@@ -1,4 +1,6 @@
-﻿using StevenChen.SportStore.WebApp;
+﻿using StevenChen.SportStore.Domain.Entities;
+using StevenChen.SportStore.WebApp;
+using StevenChen.SportStore.WebApp.Infrastructure.Binders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,7 @@ namespace StevenChen.SportStore.WebApp
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             IocConfig.Register();
+            ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
         }
     }
 }
