@@ -33,6 +33,8 @@ namespace StevenChen.SportStore.WebApp
 
             //builder.RegisterInstance<IProductsRepository>(new EFProductRepository());
             builder.RegisterType<EFProductRepository>().As<IProductsRepository>();
+            builder.RegisterType<EmailOrderProcessor>().As<IOrderProcessor>();
+            builder.RegisterType<EmailSettings>();
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
