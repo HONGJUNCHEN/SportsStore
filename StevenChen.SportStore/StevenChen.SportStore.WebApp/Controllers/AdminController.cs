@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace StevenChen.SportStore.WebApp.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private IProductsRepository repository;

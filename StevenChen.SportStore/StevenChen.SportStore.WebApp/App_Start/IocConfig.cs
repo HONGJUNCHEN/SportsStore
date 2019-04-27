@@ -4,6 +4,9 @@ using Moq;
 using StevenChen.SportStore.Domain.Abstract;
 using StevenChen.SportStore.Domain.Concrete;
 using StevenChen.SportStore.Domain.Entities;
+using StevenChen.SportStore.WebApp.Controllers;
+using StevenChen.SportStore.WebApp.Infrastructure.Abstract;
+using StevenChen.SportStore.WebApp.Infrastructure.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +38,8 @@ namespace StevenChen.SportStore.WebApp
             builder.RegisterType<EFProductRepository>().As<IProductsRepository>();
             builder.RegisterType<EmailOrderProcessor>().As<IOrderProcessor>();
             builder.RegisterType<EmailSettings>();
+            //builder.RegisterType<FormsAuthProvider>().As<IAuthProvider>();
+            builder.RegisterType<DbAuthProvider>().As<IAuthProvider>();
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
