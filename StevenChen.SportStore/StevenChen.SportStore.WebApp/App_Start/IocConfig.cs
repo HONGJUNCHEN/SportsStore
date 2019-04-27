@@ -35,6 +35,8 @@ namespace StevenChen.SportStore.WebApp
             //builder.RegisterInstance<IProductsRepository>(mock.Object);
 
             //builder.RegisterInstance<IProductsRepository>(new EFProductRepository());
+
+            builder.RegisterType<EFDbContext>();
             builder.RegisterType<EFProductRepository>().As<IProductsRepository>();
             builder.RegisterType<EmailOrderProcessor>().As<IOrderProcessor>();
             builder.RegisterType<EmailSettings>();

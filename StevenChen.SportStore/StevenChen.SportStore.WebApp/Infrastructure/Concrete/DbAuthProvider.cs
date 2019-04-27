@@ -11,6 +11,7 @@ namespace StevenChen.SportStore.WebApp.Infrastructure.Concrete
     public class DbAuthProvider : IAuthProvider
     {
         private EFDbContext _dbContext;
+
         public DbAuthProvider(EFDbContext dbContext)
         {
             _dbContext = dbContext;

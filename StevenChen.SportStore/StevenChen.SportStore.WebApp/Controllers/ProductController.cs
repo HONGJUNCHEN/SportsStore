@@ -1,4 +1,5 @@
 ﻿using StevenChen.SportStore.Domain.Abstract;
+using StevenChen.SportStore.Domain.Entities;
 using StevenChen.SportStore.WebApp.Models;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,23 @@ namespace StevenChen.SportStore.WebApp.Controllers
 
             return View(model);
         }
-       
+
+        public FileContentResult GetImage(int productId)
+        {
+            Product prod = repository
+            .Products
+            .FirstOrDefault(p => p.ProductId == productId);
+            if (prod != null)
+            {
+                return File(prod.ImageData, prod.ImageMimeType);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
     }
+
+
 }
